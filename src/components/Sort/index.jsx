@@ -1,9 +1,37 @@
 import React from 'react';
 
-export function Sort() {
+export function Sort({value, onChangeSort}) {
+
+  const sortCategory = [
+    {
+      name: 'популярности(возрастание)',
+      sortBy: 'rating'
+    },
+    {
+      name: 'популярности(убывание)',
+      sortBy: '-rating'
+    },
+    {
+      name: 'цене(возрастание)',
+      sortBy: 'price'
+    },
+    {
+      name: 'цене(убывание)',
+      sortBy: '-price'
+    },
+  
+    {
+      name: 'алфавиту',
+      sortBy: 'name'
+    }
+  ]
+
   const [open, setOpen] = React.useState(false);
-  const [checked, setChecked] = React.useState('популярности');
-  const sortCategory = ['популярности', 'цене', 'алфавиту'];
+  // const [checked, setChecked] = React.useState(sortCategory[0]);
+
+
+
+ 
   return (
     <div className='sort'>
       <div className='sort__label'>
@@ -23,15 +51,16 @@ export function Sort() {
         <b>Сортировка по:</b>
         <span  onClick={()=> {
         setOpen(!open);
-      }}>{checked}</span>
+      }}>{value.name}</span>
       </div>
       {open && (
         <div className='sort__popup'>
           <ul>
-            {sortCategory.map(el => <li onClick={()=> {
-              setChecked(el);
+            {sortCategory.map((el, index) => <li onClick={()=> {
+              // setChecked(sortCategory[index]);
+              onChangeSort(sortCategory[index])
               setOpen(false);
-            }} key={el} className={el === checked ? 'active' : ''}>{el}</li>)}
+            }} key={el.name} className={el.name === value.name ? 'active' : ''}>{el.name}</li>)}
           </ul>
         </div>
       )}
