@@ -7,10 +7,16 @@ import { Header } from './components/Header';
 import { Home } from './components/pages/Home';
 import { Cart } from './components/pages/Cart';
 import { Page404 } from './components/pages/Page404';
+import { SearchContext } from './context/SearchContext';
+
+
 
 function App() {
+  const [searchValue, setSearchValue] = React.useState('');
+  
   return (
     <>
+    <SearchContext.Provider value={{searchValue, setSearchValue}}>
       <div className='wrapper'>
         <Header />
         <div className='content'>
@@ -21,6 +27,7 @@ function App() {
           </Routes>
         </div>
       </div>
+    </SearchContext.Provider>
     </>
   );
 }

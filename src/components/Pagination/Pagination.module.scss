@@ -1,0 +1,31 @@
+.root {
+  display: flex;
+  gap: 40px;
+  
+  
+  :global {  //Если класс написан не нами(библиотека) это решение проблемы
+    li {
+      // transition: background-color 0.3s ease-in-out;
+    }
+    :hover {
+     
+    }
+    :hover a {
+      color: #fff;
+      background-color: #fe5f1e;
+    }
+    a {
+      color: #fe5f1e;
+      transition: color 0.3s ease-in-out,  background-color 0.3s ease-in-out;
+      padding: 8px 15px;
+      border: 1px solid #fe5f1e;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .selected a {
+      color: #fff;
+      background-color: #fe5f1e;
+    }
+  }
+  
+}
