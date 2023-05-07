@@ -32,7 +32,7 @@ export function Sort() {
   ];
 
   const onClickListItem = (obj) => {
-    dispatch(setSort());
+    dispatch(setSort(obj));
     setOpen(false);
   }
 
